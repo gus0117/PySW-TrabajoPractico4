@@ -1,0 +1,149 @@
+<!-- Formulario -->
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <label for="selPais">País</label>
+                    <select class="form-control" id="selPais" name="pais" [(ngModel)]="pais">
+                      <option value="argentina">Argentina</option>
+                      <option value="usa">Estados Unidos</option>
+                      <option value="spain">España</option>
+                      <option value="italy">Italia</option>
+                      <option value="germany">Alemania</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="chkConfirmados" name="casosConfirmados" [(ngModel)]="casosConfirmados">
+                    <label class="form-check-label" for="chkConfirmados">Casos Confirmados</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="chkCurados" name="curados" [(ngModel)]="curados">
+                    <label class="form-check-label" for="chkCurados">Curados</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="chkFallecidos" name="fallecidos" [(ngModel)]="fallecidos">
+                    <label class="form-check-label" for="chkFallecidos">Fallecidos</label>
+                </div>
+                <button type="submit" class="btn btn-success my-4" name="consultar" (click)="consultarPais()">Consultar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- RESULTADO CONSULTA-->
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngIf="casosConfirmados == true && resultadoObtenido == true">
+      Casos Confirmados: {{resultado.newCases_text}}
+    </div>
+    <div class="col-4" *ngIf="curados == true && resultadoObtenido == true">
+      Curados: {{resultado.totalRecovered_text}}
+    </div>
+    <div class="col-4" *ngIf="fallecidos == true && resultadoObtenido == true">
+      Fallecidos: {{resultado.newDeaths_text}}
+    </div>
+  </div>
+</div>
+<!-- TABLA -->
+<div class="container my-4">
+    <h5>
+        Estadísticas Generales
+    </h5>
+    <div class="table-responsive">
+        <table class="table text-right">
+            <thead>
+              <tr>
+                <th class="text-left" scope="col">Ubicación</th>
+                <th scope="col">Casos Activos</th>
+                <th scope="col">Ultima Actualizacion</th>
+                <th scope="col">Nuevos Casos</th>
+                <th scope="col">Nuevas Muertes</th>
+                <th scope="col">Total de casos</th>
+                <th scope="col">Total de muertes</th>
+                <th scope="col">Total de recuperados</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/iconos/mundo.jpg" width="25px" height="25px">
+                    Todo el mundo
+                </td>
+                <td>{{mundo.activeCases_text}}</td>
+                <td>{{mundo.lastUpdate}}</td>
+                <td>{{mundo.newCases_text}}</td>
+                <td>{{mundo.newDeaths_text}}</td>
+                <td>{{mundo.totalCases_text}}</td>
+                <td>{{mundo.totalDeaths_text}}</td>
+                <td>{{mundo.totalRecovered_text}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/icono_bandera_argentina.jpg" width="25px" height="20px">
+                    Argentina
+                </td>
+                <td>{{argentina.activeCases_text}}</td>
+                <td>{{argentina.lastUpdate}}</td>
+                <td>{{argentina.newCases_text}}</td>
+                <td>{{argentina.newDeaths_text}}</td>
+                <td>{{argentina.totalCases_text}}</td>
+                <td>{{argentina.totalDeaths_text}}</td>
+                <td>{{argentina.totalRecovered_text}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/icono_bandera_usa.jpg" width="25px" height="20px">
+                    Estados Unidos
+                </td>
+                <td>{{usa.activeCases_text}}</td>
+                <td>{{usa.lastUpdate}}</td>
+                <td>{{usa.newCases_text}}</td>
+                <td>{{usa.newDeaths_text}}</td>
+                <td>{{usa.totalCases_text}}</td>
+                <td>{{usa.totalDeaths_text}}</td>
+                <td>{{usa.totalRecovered_text}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/iconos/icono_bandera_spain.png" width="25px" height="20px">
+                    España
+                </td>
+                <td>{{spain.activeCases_text}}</td>
+                <td>{{spain.lastUpdate}}</td>
+                <td>{{spain.newCases_text}}</td>
+                <td>{{spain.newDeaths_text}}</td>
+                <td>{{spain.totalCases_text}}</td>
+                <td>{{spain.totalDeaths_text}}</td>
+                <td>{{spain.totalRecovered_text}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/iconos/icono_bandera_italia.svg" width="25px" height="20px">
+                    Italia
+                </td>
+                <td>{{italy.activeCases_text}}</td>
+                <td>{{italy.lastUpdate}}</td>
+                <td>{{italy.newCases_text}}</td>
+                <td>{{italy.newDeaths_text}}</td>
+                <td>{{italy.totalCases_text}}</td>
+                <td>{{italy.totalDeaths_text}}</td>
+                <td>{{italy.totalRecovered_text}}</td>
+              </tr>
+              <tr>
+                <td class="text-left">
+                    <img src="assets/images/iconos/icono_bandera_alemania.webp" width="25px" height="20px">
+                    Alemania
+                </td>
+                <td>{{germany.activeCases_text}}</td>
+                <td>{{germany.lastUpdate}}</td>
+                <td>{{germany.newCases_text}}</td>
+                <td>{{germany.newDeaths_text}}</td>
+                <td>{{germany.totalCases_text}}</td>
+                <td>{{germany.totalDeaths_text}}</td>
+                <td>{{germany.totalRecovered_text}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    
+</div>

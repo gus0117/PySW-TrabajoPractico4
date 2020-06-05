@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-9 font-weight-bold">
+
+            <h2>Últimas Noticias</h2>
+
+            <!-- Tarjetas -->
+            <div class="row">
+                <div class="card col-6" style="width: 18rem; border:none;" *ngFor="let item of noticias">
+                    <img [src]="item.img" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="bg-danger text-white col-8">{{item.tit}}</p>
+                      <p class="card-text">{{item.des}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <img src="/assets/images/publicidad1.png" alt="...">
+        </div>
+    </div>
+    
+</div>
